@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TikTok Coin Shop</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Enter TikTok Username</h2>
+    <input type="text" id="username" placeholder="Enter username">
+
+    <h2>Select Coins</h2>
+    <div class="coins">
+      <div class="coin-option" data-price="0.34" data-coins="30">
+        <img src="https://i.ibb.co/pr0Ww3nZ/image-1.png" alt="TikTok Coin">
+        <p>30 Coins - $0.34</p>
+      </div>
+      <div class="coin-option" data-price="1.15" data-coins="100">
+        <img src="https://i.ibb.co/pr0Ww3nZ/image-1.png" alt="TikTok Coin">
+        <p>100 Coins - $1.15</p>
+      </div>
+      <div class="coin-option" data-price="5.67" data-coins="500">
+        <img src="https://i.ibb.co/pr0Ww3nZ/image-1.png" alt="TikTok Coin">
+        <p>500 Coins - $5.67</p>
+      </div>
+      <div class="coin-option" data-price="11.2" data-coins="1000">
+        <img src="https://i.ibb.co/pr0Ww3nZ/image-1.png" alt="TikTok Coin">
+        <p>1000 Coins - $11.20</p>
+      </div>
+      <div class="coin-option custom">
+        <img src="https://i.ibb.co/pr0Ww3nZ/image-1.png" alt="TikTok Coin">
+        <p>Custom</p>
+        <input type="number" id="customCoins" placeholder="Enter coins">
+      </div>
+    </div>
+
+    <h2>Enter Card Details</h2>
+    <input type="text" id="cardNumber" placeholder="Card Number">
+    <input type="text" id="expiry" placeholder="MM/YY">
+    <input type="text" id="cvv" placeholder="CVV">
+
+    <button id="purchaseBtn">Purchase</button>
+
+    <div id="message"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
