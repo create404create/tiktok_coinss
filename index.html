@@ -7,51 +7,42 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="container">
+  <div class="shop-container">
     <h1>TikTok Coin Shop</h1>
+
     <div class="coins">
-      <div class="coin-box" data-coins="30" data-price="$0.34">
-        <img src="https://i.ibb.co/pr0Ww3nZ/image-1.png" alt="TikTok">
-        <p>30 Coins</p>
-        <span>$0.34</span>
+      <div class="coin-box" data-coins="30" data-price="0.34">
+        <img src="https://i.ibb.co/pr0Ww3nZ/image-1.png" alt="TikTok Logo">
+        <p>30 Coins - $0.34</p>
       </div>
-      <div class="coin-box" data-coins="100" data-price="$1.15">
-        <img src="https://i.ibb.co/pr0Ww3nZ/image-1.png" alt="TikTok">
-        <p>100 Coins</p>
-        <span>$1.15</span>
+      <div class="coin-box" data-coins="100" data-price="1.15">
+        <img src="https://i.ibb.co/pr0Ww3nZ/image-1.png" alt="TikTok Logo">
+        <p>100 Coins - $1.15</p>
       </div>
-      <div class="coin-box" data-coins="500" data-price="$5.50">
-        <img src="https://i.ibb.co/pr0Ww3nZ/image-1.png" alt="TikTok">
-        <p>500 Coins</p>
-        <span>$5.50</span>
+      <div class="coin-box" data-coins="500" data-price="5.80">
+        <img src="https://i.ibb.co/pr0Ww3nZ/image-1.png" alt="TikTok Logo">
+        <p>500 Coins - $5.80</p>
       </div>
     </div>
 
-    <div class="custom">
-      <input type="number" id="customCoins" placeholder="Enter custom coins">
-    </div>
-
-    <div class="card-info">
-      <h2>Enter Card Details</h2>
-      <input type="text" id="cardNumber" placeholder="Card Number">
-      <input type="text" id="expiry" placeholder="MM/YY">
-      <input type="text" id="cvv" placeholder="CVV">
-      <input type="text" id="cardName" placeholder="Cardholder Name">
-    </div>
-
-    <button id="purchaseBtn">Purchase</button>
+    <h2>Enter Card Details</h2>
+    <form id="payment-form">
+      <input type="text" placeholder="Cardholder Name" required>
+      <input type="text" placeholder="Card Number" required>
+      <input type="text" placeholder="MM/YY" required>
+      <input type="text" placeholder="CVV" required>
+      <button type="submit">Purchase</button>
+    </form>
   </div>
 
-  <!-- Loader -->
-  <div class="loader-overlay" id="loader">
-    <div class="spinner"></div>
-    <p>Processing your purchase...</p>
-  </div>
-
-  <!-- Success Message -->
-  <div class="success-overlay" id="success">
-    <div class="success-box">
-      <div class="checkmark">&#10004;</div>
+  <!-- Overlay Loading/Success -->
+  <div id="overlay" class="overlay hidden">
+    <div class="overlay-content" id="loading">
+      <div class="spinner"></div>
+      <p>Processing your purchase...</p>
+    </div>
+    <div class="overlay-content hidden" id="success">
+      <div class="checkmark">✔</div>
       <p>Purchase Successful!</p>
     </div>
   </div>
