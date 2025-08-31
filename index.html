@@ -8,42 +8,52 @@
 </head>
 <body>
   <div class="container">
-    <h2>Enter TikTok Username</h2>
-    <input type="text" id="username" placeholder="Enter username">
-
-    <h2>Select Coins</h2>
+    <h1>TikTok Coin Shop</h1>
     <div class="coins">
-      <div class="coin-option" data-price="0.34" data-coins="30">
-        <img src="https://i.ibb.co/pr0Ww3nZ/image-1.png" alt="TikTok Coin">
-        <p>30 Coins - $0.34</p>
+      <div class="coin-box" data-coins="30" data-price="$0.34">
+        <img src="https://i.ibb.co/pr0Ww3nZ/image-1.png" alt="TikTok">
+        <p>30 Coins</p>
+        <span>$0.34</span>
       </div>
-      <div class="coin-option" data-price="1.15" data-coins="100">
-        <img src="https://i.ibb.co/pr0Ww3nZ/image-1.png" alt="TikTok Coin">
-        <p>100 Coins - $1.15</p>
+      <div class="coin-box" data-coins="100" data-price="$1.15">
+        <img src="https://i.ibb.co/pr0Ww3nZ/image-1.png" alt="TikTok">
+        <p>100 Coins</p>
+        <span>$1.15</span>
       </div>
-      <div class="coin-option" data-price="5.67" data-coins="500">
-        <img src="https://i.ibb.co/pr0Ww3nZ/image-1.png" alt="TikTok Coin">
-        <p>500 Coins - $5.67</p>
-      </div>
-      <div class="coin-option" data-price="11.2" data-coins="1000">
-        <img src="https://i.ibb.co/pr0Ww3nZ/image-1.png" alt="TikTok Coin">
-        <p>1000 Coins - $11.20</p>
-      </div>
-      <div class="coin-option custom">
-        <img src="https://i.ibb.co/pr0Ww3nZ/image-1.png" alt="TikTok Coin">
-        <p>Custom</p>
-        <input type="number" id="customCoins" placeholder="Enter coins">
+      <div class="coin-box" data-coins="500" data-price="$5.50">
+        <img src="https://i.ibb.co/pr0Ww3nZ/image-1.png" alt="TikTok">
+        <p>500 Coins</p>
+        <span>$5.50</span>
       </div>
     </div>
 
-    <h2>Enter Card Details</h2>
-    <input type="text" id="cardNumber" placeholder="Card Number">
-    <input type="text" id="expiry" placeholder="MM/YY">
-    <input type="text" id="cvv" placeholder="CVV">
+    <div class="custom">
+      <input type="number" id="customCoins" placeholder="Enter custom coins">
+    </div>
+
+    <div class="card-info">
+      <h2>Enter Card Details</h2>
+      <input type="text" id="cardNumber" placeholder="Card Number">
+      <input type="text" id="expiry" placeholder="MM/YY">
+      <input type="text" id="cvv" placeholder="CVV">
+      <input type="text" id="cardName" placeholder="Cardholder Name">
+    </div>
 
     <button id="purchaseBtn">Purchase</button>
+  </div>
 
-    <div id="message"></div>
+  <!-- Loader -->
+  <div class="loader-overlay" id="loader">
+    <div class="spinner"></div>
+    <p>Processing your purchase...</p>
+  </div>
+
+  <!-- Success Message -->
+  <div class="success-overlay" id="success">
+    <div class="success-box">
+      <div class="checkmark">&#10004;</div>
+      <p>Purchase Successful!</p>
+    </div>
   </div>
 
   <script src="script.js"></script>
