@@ -1,51 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TikTok Coin Shop</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TikTok Coin Shop (Demo)</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="shop-container">
-    <h1>TikTok Coin Shop</h1>
+  <header class="site-header">
+    <div class="brand">TikTok Coin Shop (Demo)</div>
+  </header>
 
-    <div class="coins">
-      <div class="coin-box" data-coins="30" data-price="0.34">
-        <img src="https://i.ibb.co/pr0Ww3nZ/image-1.png" alt="TikTok Logo">
-        <p>30 Coins - $0.34</p>
+  <main class="container">
+    <!-- USERNAME -->
+    <section class="card" id="usernameCard">
+      <h2>Enter TikTok Username</h2>
+      <p class="muted">Start by entering the username (e.g. @your_username)</p>
+      <div class="row">
+        <input id="username" class="input" type="text" placeholder="@username" />
+        <button id="startBtn" class="btn">Continue</button>
       </div>
-      <div class="coin-box" data-coins="100" data-price="1.15">
-        <img src="https://i.ibb.co/pr0Ww3nZ/image-1.png" alt="TikTok Logo">
-        <p>100 Coins - $1.15</p>
+      <p id="usernameHint" class="hint">Please enter a username to proceed.</p>
+    </section>
+
+    <!-- COINS (hidden until username entered) -->
+    <section id="coinsSection" class="card hidden">
+      <h2>Select Coins</h2>
+      <p class="muted">Choose a bundle or pick <strong>Custom</strong> to enter any amount.</p>
+
+      <div id="coinGrid" class="grid"></div>
+
+      <div id="customBox" class="custom-box hidden">
+        <label class="label" for="customCoins">Enter custom coin amount</label>
+        <input id="customCoins" class="input" type="number" min="1" step="1" />
       </div>
-      <div class="coin-box" data-coins="500" data-price="5.80">
-        <img src="https://i.ibb.co/pr0Ww3nZ/image-1.png" alt="TikTok Logo">
-        <p>500 Coins - $5.80</p>
+    </section>
+
+    <!-- CHECKOUT (hidden until coin selected) -->
+    <section id="checkoutSection" class="card hidden">
+      <h2>Enter Card Details</h2>
+      <p class="muted">Demo only — do not enter real card details.</p>
+
+      <form id="checkoutForm" novalidate>
+        <div class="grid grid-2">
+          <div class="field">
+            <label class="label" for="cardName">Name on card</label>
+            <input id="cardName" class="input" type="text" placeholder="" />
+          </div>
+          <div class="field">
+            <label class="label" for="cardNumber">Card number</label>
+            <input id="cardNumber" class="input" type="text" inputmode="numeric" placeholder="" />
+          </div>
+        </div>
+
+        <div class="grid grid-3">
+          <div class="field">
+            <label class="label" for="expMonth">Expiry (MM)</label>
+            <input id="expMonth" class="input" type="text" inputmode="numeric" maxlength="2" placeholder="" />
+          </div>
+          <div class="field">
+            <label class="label" for="expYear">Expiry (YY)</label>
+            <input id="expYear" class="input" type="text" inputmode="numeric" maxlength="2" placeholder="" />
+          </div>
+          <div class="field">
+            <label class="label" for="cvv">CVV</label>
+            <input id="cvv" class="input" type="text" inputmode="numeric" maxlength="4" placeholder="" />
+          </div>
+        </div>
+
+        <div class="row between">
+          <div class="summary">
+            <div>Selected: <span id="summaryCoins">—</span></div>
+            <div>Total: <strong id="summaryPrice">$0.00</strong></div>
+          </div>
+          <button id="buyBtn" class="btn" type="submit">Buy</button>
+        </div>
+
+        <p id="formHint" class="hint">Please complete all fields to purchase.</p>
+      </form>
+
+      <div class="cards-row">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg" alt="Visa" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Amex_logo.svg" alt="Amex" />
+      </div>
+    </section>
+  </main>
+
+  <!-- OVERLAY: Loading then Success -->
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <!-- Loading state -->
+      <div id="modalLoading" class="modal-state">
+        <div class="spinner" aria-hidden="true"></div>
+        <p class="modal-text">Processing your purchase…</p>
+      </div>
+
+      <!-- Success state -->
+      <div id="modalSuccess" class="modal-state hidden">
+        <div class="success-check" aria-hidden="true">✓</div>
+        <h3>Purchase Successful</h3>
+        <p>Coins will reflect on <span id="successUser">@username</span> shortly.</p>
+        <button id="closeModal" class="btn">Close</button>
       </div>
     </div>
-
-    <h2>Enter Card Details</h2>
-    <form id="payment-form">
-      <input type="text" placeholder="Cardholder Name" required>
-      <input type="text" placeholder="Card Number" required>
-      <input type="text" placeholder="MM/YY" required>
-      <input type="text" placeholder="CVV" required>
-      <button type="submit">Purchase</button>
-    </form>
   </div>
 
-  <!-- Overlay Loading/Success -->
-  <div id="overlay" class="overlay hidden">
-    <div class="overlay-content" id="loading">
-      <div class="spinner"></div>
-      <p>Processing your purchase...</p>
-    </div>
-    <div class="overlay-content hidden" id="success">
-      <div class="checkmark">✔</div>
-      <p>Purchase Successful!</p>
-    </div>
-  </div>
+  <footer class="container footer">
+    <small class="muted">Demo only • Not affiliated with TikTok</small>
+  </footer>
 
   <script src="script.js"></script>
 </body>
