@@ -1,46 +1,18 @@
-let selectedCoins = null;
-
-document.querySelectorAll(".coin-option").forEach(option => {
-  option.addEventListener("click", () => {
-    document.querySelectorAll(".coin-option").forEach(o => o.classList.remove("selected"));
-    option.classList.add("selected");
-
-    if (option.classList.contains("custom")) {
-      selectedCoins = null; // custom option will be set later
-    } else {
-      selectedCoins = option.dataset.coins;
-    }
-  });
-});
-
 document.getElementById("purchaseBtn").addEventListener("click", () => {
-  const username = document.getElementById("username").value;
-  const cardNumber = document.getElementById("cardNumber").value;
-  const expiry = document.getElementById("expiry").value;
-  const cvv = document.getElementById("cvv").value;
-  const customCoins = document.getElementById("customCoins").value;
+  const loader = document.getElementById("loader");
+  const success = document.getElementById("success");
 
-  if (!username || !cardNumber || !expiry || !cvv) {
-    alert("Please fill in all details!");
-    return;
-  }
+  // Show loader
+  loader.style.display = "flex";
 
-  if (!selectedCoins && !customCoins) {
-    alert("Please select coins!");
-    return;
-  }
-
-  if (customCoins) {
-    selectedCoins = customCoins;
-  }
-
-  const message = document.getElementById("message");
-  message.textContent = "Processing your purchase...";
-  message.style.color = "blue";
-
-  // Fake loading
+  // After 2 seconds hide loader and show success
   setTimeout(() => {
-    message.textContent = "Purchase Successful!";
-    message.style.color = "green";
-  }, 3000); // 3 sec loading
+    loader.style.display = "none";
+    success.style.display = "flex";
+
+    // Hide success after 2.5 seconds
+    setTimeout(() => {
+      success.style.display = "none";
+    }, 2500);
+  }, 2000);
 });
