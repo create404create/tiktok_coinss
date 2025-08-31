@@ -1,7 +1,7 @@
 body {
-  background: white;
   font-family: Arial, sans-serif;
   text-align: center;
+  background: #fff;
   margin: 0;
   padding: 20px;
 }
@@ -11,54 +11,116 @@ body {
   margin: auto;
 }
 
-input, button {
-  width: 90%;
-  padding: 10px;
-  margin: 8px 0;
-  font-size: 16px;
-}
-
-button {
-  background: black;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
-button:hover {
-  background: #444;
-}
-
 .coins {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
 }
 
-.coin-option {
-  border: 1px solid #ccc;
+.coin-box {
+  border: 2px solid #ddd;
   padding: 10px;
+  border-radius: 10px;
   cursor: pointer;
-  border-radius: 8px;
   transition: 0.3s;
 }
 
-.coin-option img {
+.coin-box img {
   width: 40px;
-  height: 40px;
 }
 
-.coin-option:hover {
-  background: #f0f0f0;
+.coin-box:hover {
+  border-color: #ff0050;
 }
 
-.coin-option.selected {
-  border: 2px solid #000;
+.custom input {
+  width: 90%;
+  padding: 10px;
+  margin: 15px 0;
 }
 
-#message {
-  margin-top: 20px;
-  font-size: 18px;
-  font-weight: bold;
+.card-info {
+  margin: 20px 0;
+}
+
+.card-info input {
+  width: 90%;
+  padding: 10px;
+  margin: 8px 0;
+}
+
+button {
+  background: #ff0050;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background: #e60045;
+}
+
+/* Loader */
+.loader-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.7);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.spinner {
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid #ff0050;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Success Overlay */
+.success-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.success-box {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  animation: pop 0.5s ease;
+}
+
+.checkmark {
+  font-size: 50px;
+  color: green;
+  margin-bottom: 10px;
+}
+
+@keyframes pop {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
 }
